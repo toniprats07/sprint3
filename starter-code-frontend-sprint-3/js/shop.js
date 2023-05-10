@@ -92,7 +92,10 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
-    
+    for (let i = 0; i < cartList.length; i++){
+        total += cartList[i].price;
+    }
+    console.log(total); 
 }
 
 // Exercise 4
@@ -129,5 +132,6 @@ function removeFromCart(id) {
 
 function open_modal(){
 	console.log("Open Modal");
+    calculateTotal();
 	printCart();
 }
