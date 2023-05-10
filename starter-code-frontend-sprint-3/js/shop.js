@@ -85,12 +85,14 @@ function buy(id) {
     
 // Exercise 2
 function cleanCart() {
-    
+    cartList.length = 0;
+    console.log(cartList);
 }
 
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    
 }
 
 // Exercise 4
