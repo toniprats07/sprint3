@@ -127,7 +127,15 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-    
+    for (let i = 0; i < cart.length; i++){
+        if (cart[i].name === 'cooking oil' && cart[i].quantity >= 3){
+            subtotalWithDiscount = cart[i].quantity * 10;
+            console.log('total a pagar aceite ' +subtotalWithDiscount);
+        }else if (cart[i].name === 'Instant cupcake mixture' && cart[i].quantity >= 10) {
+            subtotalWithDiscount = cart[i].quantity * cart[i].price * 2/3;
+            console.log('total a pagar pastel ' +subtotalWithDiscount);
+        }
+    }
 }
 
 // Exercise 6
