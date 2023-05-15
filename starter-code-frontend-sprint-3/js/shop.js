@@ -71,6 +71,8 @@ var cart = [];
 
 var total = 0;
 
+var subtotalWithDiscount = 0;
+
 // Exercise 1
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
@@ -102,11 +104,30 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    for (let i = 0; i < cartList.length; i++) {
+        let product = cartList[i];
+        let existingProduct = null;
+    
+        for (let j = 0; j < cart.length; j++) {
+          if (cart[j].name === product.name) {
+            existingProduct = cart[j];
+            break;
+          }
+        }
+    
+        if (existingProduct) {
+          existingProduct.quantity++;
+        } else {
+          cart.push(Object.assign({}, product, { quantity: 1 }));
+        }
+      }
+      console.log(cart);
 }
 
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    
 }
 
 // Exercise 6
