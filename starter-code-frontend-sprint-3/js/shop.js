@@ -167,11 +167,11 @@ function applyPromotionsCart() {
         tdCantidad.textContent = cart[i].quantity;
         tr.appendChild(tdCantidad);
         //total
-        if (cart[i].name === 'cooking oil'){
+        if (cart[i].name === 'cooking oil' && cart[i].quantity >= 3){
             let tdTotal = document.createElement("td");
             tdTotal.textContent = subtotalWithDiscount1.toFixed(2) +' €';
             tr.appendChild(tdTotal);
-        } else if (cart[i].name === 'Instant cupcake mixture'){
+        } else if (cart[i].name === 'Instant cupcake mixture' && cart[i].quantity >= 10){
             let tdTotal = document.createElement("td");
             tdTotal.textContent = subtotalWithDiscount2.toFixed(2) +' €';
             tr.appendChild(tdTotal);
@@ -191,15 +191,15 @@ function applyPromotionsCart() {
         let decrementButton = document.createElement('button');
         decrementButton.classList.add('btn', 'btn-danger');
         decrementButton.textContent = '-';
-        decrementButton.addEventListener('click', () => removeFromCart(i, true));  
-        //boton incremento
+        decrementButton.addEventListener('click', () => removeFromCart());  
+        /*//boton incremento
         let incrementButton = document.createElement('button');
         incrementButton.classList.add('btn', 'btn-success');
         incrementButton.textContent = '+';
-        incrementButton.addEventListener('click', () => removeFromCart(i, false));
+        incrementButton.addEventListener('click', () => removeFromCart());*/
         //agregar botones
         tdButtons.appendChild(decrementButton);
-        tdButtons.appendChild(incrementButton);
+        //tdButtons.appendChild(incrementButton);
         tr.appendChild(tdButtons);
     }
     let totalPrice = document.getElementById('total_price');
@@ -246,9 +246,8 @@ function addToCart(id) {
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
-    
-}
 
+}
 
 function open_modal(){
 	console.log("Open Modal");
