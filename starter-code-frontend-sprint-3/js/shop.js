@@ -75,7 +75,7 @@ var subtotalWithDiscount1 = 0;
 var subtotalWithDiscount2 = 0
 
 // Exercise 1
-function buy(id) {
+/*function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     for (let i = 0; i < products.length; i++){
        if (id == products[i].id){
@@ -84,7 +84,7 @@ function buy(id) {
             console.log(cartList);
         }
     }
-}
+}*/
     
 // Exercise 2
 function cleanCart() {
@@ -106,7 +106,7 @@ function calculateTotal() {
 }
 
 // Exercise 4
-function generateCart() {
+/*function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
     for (let i = 0; i < cartList.length; i++) {
@@ -127,7 +127,7 @@ function generateCart() {
         }
       }
       console.log(cart);
-}
+}*/
 
 // Exercise 5
 function applyPromotionsCart() {
@@ -214,7 +214,32 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-    
+    let product = null;
+
+    for (let i = 0; i < products.length; i++) {
+        if (id === products[i].id) {
+            product = products[i];
+            break;
+        }
+    }
+
+    if (product) {
+        let existingProduct = null;
+
+        for (let j = 0; j < cart.length; j++) {
+            if (cart[j].name === product.name) {
+                existingProduct = cart[j];;
+                break;
+            }
+        }
+        if (existingProduct) {
+            existingProduct.quantity++;
+          } else {
+            cart.push(Object.assign({}, product, { quantity: 1 }));
+          }
+    }
+
+    console.log(cart);  
 }
 
 // Exercise 9
@@ -227,7 +252,8 @@ function removeFromCart(id) {
 
 function open_modal(){
 	console.log("Open Modal");
-    generateCart()
+    //generateCart()
+    addToCart();
     applyPromotionsCart();
 	printCart();
 }
